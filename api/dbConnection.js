@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const uri =
-  "mongodb+srv://name:password@cluster0.xwxiv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose;
+const uri = process.env.MONGODB_URI;
 
 function dbConnection() {
   mongoose
