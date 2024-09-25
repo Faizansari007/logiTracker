@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(Express.json());
 app.use(cors());
 app.get("/", (req, res) => {
-  res.json({"message": "Hello friend."});
+  res.send("<h1>Wellcome to Logitrack Api</h1>");
 });
 app.use("/api/v1", require("./router/routes"));
 
