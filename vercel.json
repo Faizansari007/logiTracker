@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.js",
+      "src": "api/index.js",  // Path to your Express app
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "api/index.js"
+      "src": "/api/v1/(.*)", // Ensures requests to /api/v1/ are handled by your Express app
+      "dest": "/api/index.js"
     },
     {
-      "src": "/",
-      "dest": "api/index.js"
+      "src": "/(.*)", // Ensures all other requests (like /) are also handled by your app
+      "dest": "/api/index.js"
     }
   ]
 }
