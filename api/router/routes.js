@@ -48,4 +48,12 @@ router.post("/createuser", async (req, res) => {
   }
 });
 
+router.get("/testing", async (req, res) => {
+  res.status(201).send({
+      status: true,
+      message: "Api testing successfully",
+    });
+ 
+});
+
 module.exports = router;
