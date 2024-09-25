@@ -8,9 +8,7 @@ app.use(Express.json());
 // app.use(cors())
 app.use(cors(
   {
-    origin: ["https://logi-tracker-ihzh.vercel.app"],
-    methods:["POST","GET"],
-    credentials: true
+    origin: ["https://logi-tracker-ihzh.vercel.app"]
   }
 ));
 app.get("/", (req, res) => {
