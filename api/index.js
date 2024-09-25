@@ -13,5 +13,5 @@ app.use("/api/v1", require("./router/routes"));
 
 app.listen(PORT, () => {
   dbConnection();
-  console.log(My app is listening on port ${PORT});
+  console.log(`My app is listening on port ${PORT}`);
 });
