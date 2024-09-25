@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from  "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,17 +25,30 @@ const Signin = () => {
     event.preventDefault();
     console.log(formData);
     const url = "https://logi-tracker.vercel.app/api/v1/createuser";
-    const data = await fetch(url, {
-      method: "POST",
-      headers: new Headers({ "content-type": "application/json" }),
-      body: JSON.stringify(formData),
+    // const url = "http://localhost:8000/api/v1/createuser";
+
+    // const data = await fetch(url, {
+    //   method: "POST",
+    //   headers: new Headers({ "content-type": "application/json" }),
+    //   body: JSON.stringify(formData),
+    // });
+  //   const config = {
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     }
+  // };
+  //   const data = await axios.post("http://localhost:8000/api/v1/createuser", JSON.stringify(formData),config)
+    const data = await axios.post(url, formData, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
     });
-    const response = await data.json();
-    console.log(response);
-    if (response.status === false) {
+    const response = data;
+    console.log(response.data.status);
+    if (response.data.status === false) {
       console.log("inside toast");
       toast.error(response.message, { duration: 3000 });
-    } else if (response.status === true) {
+    } else if (response.data.status === true) {
       dispatch(setuser("logged in"));
       navigate("/trending");
     }

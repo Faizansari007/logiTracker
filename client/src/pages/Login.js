@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from  "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -21,20 +22,27 @@ const Login = () => {
     event.preventDefault();
 
     const url = "https://logi-tracker.vercel.app/api/v1/login";
-    const data = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    // const url = "http://localhost:8000/api/v1/login";
+    // const data = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // });
 
-    const response = await data.json();
-    console.log(response.status);
-    if (response.status === false) {
+    const data = await axios.post(url, formData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      });
+
+    const response = data;
+    console.log(response.data.status);
+    if (response.data.status === false) {
       console.log("inside toast");
       toast.error(response.message, { duration: 3000 });
-    } else if (response.status) {
+    } else if (response.data.status) {
       dispatch(setuser("logged in"));
       navigate("/trending");
     }
