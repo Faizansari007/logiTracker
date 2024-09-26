@@ -21,7 +21,7 @@ const Login = () => {
   async function handleSubmission(event) {
     event.preventDefault();
 
-    const url = "https://logitracker.onrender.com/api/v1/login";
+    const url = "https://logi-tracker.vercel.app/api/v1/login";
     // const url = "http://localhost:8000/api/v1/login";
     // const data = await fetch(url, {
     //   method: "POST",
